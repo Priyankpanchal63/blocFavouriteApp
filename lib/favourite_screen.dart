@@ -60,8 +60,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                   itemBuilder: (context, index) {
                     final item = state.favouriteItemList[index];
                     return Card(
+                      color: Colors.blueAccent,
                       child: ListTile(
                         leading: Checkbox(
+
                             value: state.temFavouriteItemList.contains(item)?true:false,
                             onChanged: (value) {
                               if (value!) {
@@ -87,7 +89,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             },
                             icon: Icon(item.isFavourite
                                 ? Icons.favorite
-                                : Icons.favorite_border_outlined)),
+                                : Icons.favorite_border_outlined)),iconColor: Colors.amber,
                       ),
                     );
                   });
