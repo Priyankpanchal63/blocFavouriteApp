@@ -25,23 +25,25 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteItemState> {
         listStatus: ListStatus.sucess));
   }
 
-  void _addFavouriteItem(Favouriteitem event, Emitter<FavouriteItemState>emit) async {
+  void _addFavouriteItem(
+      Favouriteitem event, Emitter<FavouriteItemState> emit) async {
     final index =
         favouriteList.indexWhere((element) => element.id == event.item.id);
-   if(event.item.isFavourite){
-     if(temFavouriteList.contains(favouriteList[index])){
-       temFavouriteList.remove(favouriteList[index]);
-       temFavouriteList.add(event.item);
-     }
-   }
-   else{
-     if(temFavouriteList.contains(favouriteList[index])){
-       temFavouriteList.remove(favouriteList[index]);
-       temFavouriteList.add(event.item);
-     }
-   }
-     favouriteList[index]=event.item;
-    emit(state.copyWith(favouriteItemList: List.from(favouriteList)));
+    if (event.item.isFavourite) {
+      if (temFavouriteList.contains(favouriteList[index])) {
+        temFavouriteList.remove(favouriteList[index]);
+        temFavouriteList.add(event.item);
+      }
+    } else {
+      if (temFavouriteList.contains(favouriteList[index])) {
+        temFavouriteList.remove(favouriteList[index]);
+        temFavouriteList.add(event.item);
+      }
+    }
+    favouriteList[index] = event.item;
+    emit(state.copyWith(
+        favouriteItemList: List.from(favouriteList),
+        temFavouriteItemList: List.from(temFavouriteList)));
   }
 
   void _selectItem(event, emit) async {
@@ -66,5 +68,4 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteItemState> {
       temFavouriteItemList: List.from(temFavouriteList),
     ));
   }
-
 }

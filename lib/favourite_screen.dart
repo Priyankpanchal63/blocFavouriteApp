@@ -24,7 +24,11 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favourite App'),
+        title: Center(child: Text('Favourite App',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 23,fontFeatures: [
+          FontFeature('onum'), // Old-style numerals
+          FontFeature('smcp'),  // Enables small caps
+        ],
+        ),)),
         actions: [
           BlocBuilder<FavouriteBloc, FavouriteItemState>(
               builder: (context, state) {
